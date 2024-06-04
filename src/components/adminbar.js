@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Box, IconButton, Badge, Tooltip, Menu, MenuItem, Button, TextField, Modal } from '@mui/material';
+import { Box, IconButton, Badge, Tooltip, Menu, MenuItem, Button, TextField, Modal, Typography } from '@mui/material';
 import { Settings, Notifications, Mail, ArrowDropDown } from '@mui/icons-material';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 
-function Navbar() {
+function AdminBar() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [anchorEl1, setAnchorEl1] = useState(null);
   const [username, setUsername] = useState('');
@@ -162,23 +162,8 @@ useEffect(() => {
       <div className='flex justify-between items-center'>
         <h6 className='text-[1.6em] text-white font-bold'>LOST AND FOUND ITEMS SYSTEM</h6>
         <Box display="flex" alignItems="center">
-          <NavLink to="/chat">
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={chats.length} color="error">
-                <Mail sx={{ color: 'white' }} />
-              </Badge>
-            </IconButton>
-          </NavLink>
-          <IconButton
-            size="large"
-            aria-label="show 17 new notifications"
-            color="inherit"
-            onClick={() => setIsModalOpen1(true)}
-          >
-            <Badge badgeContent={notifications.length + notifications1.length}  color="error">
-              <Notifications sx={{ color: 'white' }} />
-            </Badge>
-          </IconButton>
+         
+         <Typography color="white" marginTop="28px">ADMIN PAGE</Typography>
           <div className='flex gap-3'>
             <Tooltip title="View profile">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, marginLeft: '20px' }}>
@@ -186,14 +171,10 @@ useEffect(() => {
               </IconButton>
             </Tooltip>
             <div onClick={handleOpenUserMenu} className='flex items-baseline mt-8 cursor-pointer'>
-              <p className='text-white font-medium'>{username}</p>
+              <p className='text-white font-medium'>admin: @{username}</p>
               <div><ArrowDropDown sx={{ color: 'white' }} /></div>
             </div>
-            <div className='flex align-baseline'>
-              <IconButton size="large" color='inherit'>
-                <Settings onClick={handleOpenUserMenu1} sx={{ color: 'white', fontSize: '1.2em' }} />
-              </IconButton>
-            </div>
+            
           </div>
           <Menu
             anchorEl={anchorEl}
@@ -254,7 +235,7 @@ useEffect(() => {
       </div>
       <Modal open={isModalOpen} onClose={handleCloseModal}>
         <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: 'white', padding: '20px', borderRadius: '8px' }}>
-          <h2>Edit Profile</h2>
+          <h2 className='text-center font-medium '>Edit Profile</h2>
           <TextField
             label="Username"
             name="username"
@@ -325,7 +306,6 @@ useEffect(() => {
               variant="outlined"
               margin="normal"
               disabled
-              sx={{display:'none'}}
             />
           <TextField
             label="message"
@@ -357,4 +337,4 @@ useEffect(() => {
   );
 }
 
-export default Navbar;
+export default AdminBar;

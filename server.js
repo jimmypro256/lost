@@ -639,8 +639,55 @@ app.get('/api/chats/stream', async (req, res) => {
   });
 });
 
+// Define the `decisions` array
+// Define schema for decisions collection
+const DecisionSchema = new mongoose.Schema({
+  username: String,
+  message: String,
+  date: { type: Date, default: Date.now }
+});
 
-// Serve static files from the uploads directory
+// Create model for decisions collection
+const Decision = mongoose.model('Decision', DecisionSchema);
+app.post('/decision', async (req, res) => {
+  try {
+    const { username, message } = req.body;
+
+    // Create a new decision document
+    const newDecision = new Decision({ username, message });
+
+    // Save the decision to the database
+    await newDecision.save();
+
+    console.log(`Decision recorded: ${username} - ${message}`);
+    res.status(200).send('Decision recorded');
+  } catch (error) {
+    console.error('Error recording decision:', error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+});
+// GET route to fetch all decisions from MongoDB
+app.get('/decisions', async (req, res) => {
+  try {
+    const { username } = req.query;
+    
+    let verificationData;
+
+    if (username) {
+      // Fetch decision data for the specified username
+      verificationData = await Decision.find({ username });
+    } else {
+      // Fetch all decision data
+      verificationData = await Decision.find();
+    }
+
+    res.json(verificationData);
+  } catch (error) {
+    console.error('Error fetching verification data:', error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+});
+
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 const PORT = process.env.PORT || 5000;

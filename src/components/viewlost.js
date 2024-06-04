@@ -159,7 +159,7 @@ const handleRewardButtonClick = (reward) => {
                   <div className='p-1 border bg-white px-7 border-gray-800 flex rounded-xl gap-3 items-center'>
                     <input className='outline-none p-1 rounded-lg'   value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)} placeholder="search items" type='text'/>
-                  <Search color='primary' onClick={handleSearch} sx={{fontSize:'2em', color:'white', cursor:'pointer'}}/>
+                  <Search color='primary' onClick={handleSearch} sx={{fontSize:'2em', cursor:'pointer'}}/>
                   </div>
                   </div>
 
@@ -176,7 +176,7 @@ const handleRewardButtonClick = (reward) => {
                 <>
                  <CardActionArea>
                   {/* Image */}
-                   {item.imagePath && <img src={`http://localhost:5000/` + item.imagePath} alt={`Image ${index + 1}`} className='w-full h-60 border border-white rounded-none mb-2' />} 
+                   {item.imagePath && <img src={`http://localhost:5000/` + item.imagePath} alt={`Image ${index + 1}`} className='w-full h-[35vh] border border-white rounded-none mb-2' />} 
        {/* Description */}
       
                   {/* Contact */}

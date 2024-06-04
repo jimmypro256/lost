@@ -30,6 +30,7 @@ function Found() {
   const [searchResults, setSearchResults] = useState([]);
   const [searchCounts, setSearchCounts] = useState({});
   const [successModalOpen, setSuccessModalOpen] = useState(false);
+  const [successModalOpen1, setSuccessModalOpen1] = useState(false);
   const [openModal1, setOpenModal1] = useState(false);
   const [openModal2, setOpenModal2] = useState(false);
   const [rating, setRating] = useState(0);
@@ -75,6 +76,7 @@ function Found() {
           });
           const data = await response.json();
           console.log('Claim successful:', data);
+          setSuccessModalOpen1(true)
       } catch (error) {
           console.error('Error claiming item:', error);
       }
@@ -208,7 +210,7 @@ const handleFeedback = () => {
                   <div className='p-1 bg-white border px-7 border-gray-800 flex rounded-xl gap-3 items-center'>
                     <input className='outline-none p-1 rounded-lg'   value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)} placeholder="search items" type='text'/>
-                  <Search color='primary' onClick={handleSearch} sx={{fontSize:'2em', color:'white', cursor:'pointer'}}/>
+                  <Search color='primary' onClick={handleSearch} sx={{fontSize:'2em', cursor:'pointer'}}/>
 
                   
                   </div>
@@ -228,7 +230,7 @@ const handleFeedback = () => {
 
                 <CardActionArea>
                   {/* Image */}
-                   {item.imagePath && <img src={`http://localhost:5000/` + item.imagePath} alt={`Image ${index + 1}`} className='w-full h-60 border border-white rounded-none mb-2' />} 
+                   {item.imagePath && <img src={`http://localhost:5000/` + item.imagePath} alt={`Image ${index + 1}`} className='w-full h-[40vh] border border-white rounded-none mb-2' />} 
        {/* Description */}
       
                   {/* Contact */}
@@ -237,12 +239,7 @@ const handleFeedback = () => {
                   <Typography gutterBottom variant="h5" component="div">
                     {item.itemName}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {item.description}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Contact: {item.contact}
-                  </Typography>
+                
                 </CardContent>
                   </CardActionArea>
                  <div>
@@ -285,6 +282,16 @@ const handleFeedback = () => {
 
         <div className='mt-5 flex justify-center'>
             <p onClick={() => setSuccessModalOpen(false)} className='text-white bg-blue-600 p-2 mt-4 text-center font-medium text-lg cursor-pointer w-[30%]'>OK</p>
+        </div>
+        </div>
+      </Modal>
+
+      <Modal open={successModalOpen1} onClose={() => setSuccessModalOpen1(false)}>
+        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: 'white', padding: '100px' }}>
+          <h2 className='text-[2em] font-extrabold text-green-600'>Claim Sent</h2>
+
+        <div className='mt-5 flex justify-center'>
+            <p onClick={() => setSuccessModalOpen1(false)} className='text-white bg-blue-600 p-2 mt-4 text-center font-medium text-lg cursor-pointer w-[30%]'>OK</p>
         </div>
         </div>
       </Modal>

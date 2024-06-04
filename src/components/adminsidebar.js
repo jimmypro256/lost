@@ -1,4 +1,4 @@
-import {   AccountCircle, Logout, Edit, Phone, List } from '@mui/icons-material'
+import {   AccountCircle, Logout, Edit, Phone, List, Verified, ArrowCircleDownTwoTone } from '@mui/icons-material'
 import { Box, Stack} from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import '../App.css'
@@ -60,13 +60,13 @@ function AdminSidebar() {
                         <div className='flex items-center gap-3 mt-2 hover:bg-blue-800 hover:ml-3 p-3 transition-[0.5s]'>
                             <AccountCircle sx={{color:'white', fontSize:'2.2em'}}/>
                   
-                            <h5 className='text-white font-medium '>USERS</h5>
+                            <h5 className='text-white font-medium uppercase'>Users</h5>
                         
                         </div>
                         </NavLink>
 
                             
-                       <NavLink to="/adminlost">
+                       <NavLink to="/adminfound">
                         <div className='flex items-center gap-3 mt-2 hover:bg-blue-800 hover:ml-3 p-3 transition-[0.5s]'>
                             <List sx={{color:'white', fontSize:'2.2em'}}/>
                   
@@ -74,6 +74,25 @@ function AdminSidebar() {
                         
                         </div>
                         </NavLink>
+
+                        <NavLink to="/claim">
+                        <div className='flex items-center gap-3 mt-2 hover:bg-blue-800 hover:ml-3 p-3 transition-[0.5s]'>
+                            <ArrowCircleDownTwoTone sx={{color:'white', fontSize:'2.2em'}}/>
+                  
+                            <h5 className='text-white font-medium  uppercase'>Claims</h5>
+                        
+                        </div>
+                        </NavLink>
+
+                        <NavLink to="/verify">
+                        <div className='flex items-center gap-3 mt-2 hover:bg-blue-800 hover:ml-3 p-3 transition-[0.5s]'>
+                            <Verified sx={{color:'white', fontSize:'2.2em'}}/>
+                  
+                            <h5 className='text-white font-medium  uppercase'>Verification</h5>
+                        
+                        </div>
+                        </NavLink>
+
 
 
                      

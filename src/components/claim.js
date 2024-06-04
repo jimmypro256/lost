@@ -15,7 +15,7 @@ import AdminSidebar from './adminsidebar';
 import { RateReviewTwoTone } from '@material-ui/icons';
 import Navbar from './navbar';
 import Footer from './footer';
-
+import AdminBar from './adminbar';
 
 function Claim() {
   const [loading, setLoading] = useState(true);
@@ -80,7 +80,7 @@ function Claim() {
 
   return (
     <div className='bg-slate-50 h-[100vh] font-san'>
-     <Navbar/>
+     <AdminBar/>
      <Footer/>
     
       {/* Main Content */}
@@ -98,7 +98,7 @@ function Claim() {
                
 
 
-                   <p className='text-center font-medium text-[1.4em]'>ADMIN CONSOLE</p>
+                   <p className='text-center font-medium text-[1.4em]'>CLAIMED ITEMS</p>
                   </div>
 
 
@@ -131,7 +131,7 @@ function Claim() {
                         <TableCell>{account.phone}</TableCell>
                         <TableCell>{account.contact}</TableCell>
                         <TableCell>
-                          <Button variant="contained" onClick={() => handleVerify(account.username)}>Verify</Button>
+                          <Button variant="contained" onClick={() => handleVerify(account.username)}>Request Description</Button>
                         </TableCell>
                        
                       </TableRow>
@@ -151,7 +151,7 @@ function Claim() {
          
       <Modal open={successModalOpen} onClose={() => setSuccessModalOpen(false)}>
         <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: 'white', padding: '100px' }}>
-          <h2 className='text-[2em] font-extrabold text-green-600'>Sent Successfully!</h2>
+          <h2 className='text-[2em] font-extrabold text-green-600'>Request Sent !</h2>
 
         <div className='mt-5 flex justify-center'>
             <p onClick={() => setSuccessModalOpen(false)} className='text-white bg-blue-600 p-2 mt-4 text-center font-medium text-lg cursor-pointer w-[30%]'>OK</p>

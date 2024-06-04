@@ -19,7 +19,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import {CardActionArea, CardActions } from '@mui/material';
-
+import AdminBar from './adminbar';
 
 function AdminFound() {
   const [loading, setLoading] = useState(true);
@@ -198,7 +198,7 @@ useEffect(() => {
 
   return (
     <div className='bg-slate-50 h-[100vh] font-san'>
-     <Navbar/>
+     <AdminBar/>
      <Footer/>
     
       {/* Main Content */}
@@ -213,7 +213,7 @@ useEffect(() => {
           <Box width={{ xs: '100%', sm: '85%' }} className="border border-slate-400 bg-white " height={{ sm: '75vh' }} >
                   <div className='flex justify-between items-center border p-3 border-gray-100 bg-slate-50  m-1 mx-2'>
                   <div className=' flex gap-5'>
-                  <h2 className='text-center font-medium text-lg'>ADMIN CONSOLE</h2>
+                  <h2 className='text-center font-medium text-lg'>.</h2>
                     </div>
 
                
@@ -237,7 +237,7 @@ useEffect(() => {
                   <div className='p-1 bg-white border px-7 border-gray-800 flex rounded-xl gap-3 items-center'>
                     <input className='outline-none p-1 rounded-lg'   value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)} placeholder="search items" type='text'/>
-                  <Search color='primary' onClick={handleSearch} sx={{fontSize:'2em', color:'white', cursor:'pointer'}}/>
+                  <Search color='primary' onClick={handleSearch} sx={{fontSize:'2em', cursor:'pointer'}}/>
 
                   
                   </div>

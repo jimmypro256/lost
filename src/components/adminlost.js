@@ -16,7 +16,7 @@ import { NavLink , Link} from 'react-router-dom'
 
 
 import { RateReviewTwoTone } from '@material-ui/icons';
-import Navbar from './navbar';
+import AdminBar from './adminbar';
 import Footer from './footer';
 import AdminSidebar from './adminsidebar';
 
@@ -186,7 +186,7 @@ const handleRewardButtonClick = (reward) => {
 
   return (
     <div className='bg-slate-50 h-[100vh] font-san'>
-    <Navbar/>
+    <AdminBar/>
     <Footer/>
 
       {/* Main Content */}
@@ -203,7 +203,7 @@ const handleRewardButtonClick = (reward) => {
           <Box width={{ xs: '100%', sm: '85%' }} className="border border-slate-400 bg-white " height={{ sm: '75vh' }} >
                   <div className='flex justify-between items-center p-3 border border-gray-100 bg-slate-50  m-1 mx-2'>
                   <div className=' flex gap-5'>
-                      <h2 className='text-center font-medium text-lg'>ADMIN CONSOLE</h2>
+                      <h2 className='text-center font-medium text-lg'>.</h2>
                     </div>
 
                
@@ -227,7 +227,7 @@ const handleRewardButtonClick = (reward) => {
                   <div className='p-1 border bg-white px-7 border-gray-800 flex rounded-xl gap-3 items-center'>
                     <input className='outline-none p-1 rounded-lg'   value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)} placeholder="search items" type='text'/>
-                  <Search color='primary' onClick={handleSearch} sx={{fontSize:'2em', color:'white', cursor:'pointer'}}/>
+                  <Search color='primary' onClick={handleSearch} sx={{fontSize:'2em', cursor:'pointer'}}/>
                   </div>
                   </div>
 
@@ -279,11 +279,11 @@ const handleRewardButtonClick = (reward) => {
         )}
 
 
-<Button variant='outlined' onClick={() => handleEditModalOpen(item)} size="small" color="primary">
+<Button variant='outlined' onClick={() => handleEditModalOpen(item)}  color="primary">
                         Edit
                     </Button>
                     {/* Add delete button */}
-                    <Button variant='outlined' onClick={() => handleDelete(item._id)} size="small" color="error">
+                    <Button variant='outlined' onClick={() => handleDelete(item._id)}  color="error">
                         Delete
   </Button>
                 </CardActions>

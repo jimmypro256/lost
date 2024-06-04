@@ -13,7 +13,7 @@ import {  Link } from 'react-router-dom'
 
 import AdminSidebar from './adminsidebar';
 import { RateReviewTwoTone } from '@material-ui/icons';
-import Navbar from './navbar';
+import AdminBar from './adminbar';
 import Footer from './footer';
 
 
@@ -134,7 +134,7 @@ const handleEditSubmit = async () => {
 
   return (
     <div className='bg-slate-50 h-[100vh] font-san'>
-     <Navbar/>
+     <AdminBar/>
      <Footer/>
     
       {/* Main Content */}
@@ -152,7 +152,7 @@ const handleEditSubmit = async () => {
                
 
 
-                   <p className='text-center font-medium text-[1.4em]'>ADMIN CONSOLE</p>
+                   <p className='text-center font-medium text-[1.4em]'>REGISTERED USERS</p>
                   </div>
 
 
@@ -220,14 +220,16 @@ const handleEditSubmit = async () => {
 
       <Modal open={editModalOpen} onClose={handleEditModalClose}>
         <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: 'background.paper', boxShadow: 24, p: 4, width: 400 }}>
-          <h2>Edit Account</h2>
+          <h2 className='text-center font-medium m-3'>Edit Account</h2>
           <form>
+            <Stack gap={4}>
             <TextField label="Username" value={editFormData.username} onChange={(e) => setEditFormData({ ...editFormData, username: e.target.value })} fullWidth />
             <TextField label="Email" value={editFormData.email} onChange={(e) => setEditFormData({ ...editFormData, email: e.target.value })} fullWidth />
             <TextField label="Phone" value={editFormData.phone} onChange={(e) => setEditFormData({ ...editFormData, phone: e.target.value })} fullWidth />
             <TextField label="Password" value={editFormData.password} onChange={(e) => setEditFormData({ ...editFormData, password: e.target.value })} fullWidth />
             <TextField label="Type" value={editFormData.type} onChange={(e) => setEditFormData({ ...editFormData, type: e.target.value })} fullWidth />
             <Button variant="contained" color="primary" onClick={handleEditSubmit}>Submit</Button>
+            </Stack>
           </form>
         </Box>
       </Modal>
